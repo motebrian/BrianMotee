@@ -71,6 +71,7 @@ function Reveal({ children, delay = 0, className = "" }) {
 export default function Portfolio() {
   const [dark, setDark] = useState(true);
   const [activeDash, setActiveDash] = useState(0);
+  const [activeProject, setActiveProject] = useState(0);
   const year = new Date().getFullYear();
 
   const theme = dark
@@ -425,62 +426,89 @@ export default function Portfolio() {
             </a>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-px" style={{ background: theme.border }}>
-            {PROJECTS.map((p, i) => (
-              <Reveal key={p.title} delay={(i % 2) * 80}>
-                <article
-                  className="card-hover p-8 h-full flex flex-col transition-all duration-300"
-                  style={{ background: theme.bg }}
+          <div className="grid md:grid-cols-[2fr_3fr] gap-px" style={{ background: theme.border }}>
+            {/* ── Tab list ── */}
+            <div style={{ background: theme.bg }}>
+              {PROJECTS.map((p, i) => (
+                <button
+                  key={p.title}
+                  onClick={() => setActiveProject(i)}
+                  className="w-full text-left px-6 py-5 flex items-center gap-4 border-b transition-all"
+                  style={{
+                    borderColor: theme.border,
+                    borderLeft: `3px solid ${activeProject === i ? theme.accent : "transparent"}`,
+                    background: activeProject === i ? theme.accentSoft : "transparent",
+                  }}
                 >
-                  <div className="flex items-start justify-between mb-4 gap-4">
-                    <h3 className="font-display text-3xl tracking-tight leading-tight">{p.title}</h3>
+                  <span
+                    className="font-mono text-[10px] uppercase tracking-[0.2em] shrink-0 w-5"
+                    style={{ color: activeProject === i ? theme.accent : theme.muted }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    className="font-display text-lg leading-tight"
+                    style={{ color: activeProject === i ? theme.text : theme.muted }}
+                  >
+                    {p.title}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {/* ── Detail panel ── */}
+            <div className="p-10 flex flex-col min-h-[420px]" style={{ background: theme.bg }}>
+              <Reveal key={activeProject}>
+                <div className="flex items-start justify-between mb-6 gap-4">
+                  <h3 className="font-display text-4xl md:text-5xl tracking-tight leading-tight">
+                    {PROJECTS[activeProject].title}
+                  </h3>
+                  <span
+                    className="font-mono text-[10px] uppercase tracking-[0.15em] px-2 py-1 whitespace-nowrap shrink-0 mt-1"
+                    style={{ background: theme.accentSoft, color: theme.accent }}
+                  >
+                    {PROJECTS[activeProject].metric}
+                  </span>
+                </div>
+
+                <p className="text-base leading-relaxed mb-8" style={{ color: theme.muted }}>
+                  {PROJECTS[activeProject].blurb}
+                </p>
+
+                <div className="flex flex-wrap gap-1.5 mb-10">
+                  {PROJECTS[activeProject].stack.map((t) => (
                     <span
-                      className="font-mono text-[10px] uppercase tracking-[0.15em] px-2 py-1 whitespace-nowrap"
-                      style={{ background: theme.accentSoft, color: theme.accent }}
-                    >
-                      {p.metric}
-                    </span>
-                  </div>
-
-                  <p className="text-sm leading-relaxed mb-6" style={{ color: theme.muted }}>
-                    {p.blurb}
-                  </p>
-
-                  <div className="flex flex-wrap gap-1.5 mb-8">
-                    {p.stack.map((t) => (
-                      <span
-                        key={t}
-                        className="font-mono text-[10px] uppercase tracking-[0.1em] px-2 py-1 border"
-                        style={{ borderColor: theme.border, color: theme.muted }}
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="mt-auto flex items-center gap-3">
-                    <a
-                      href={p.code}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn-primary font-mono text-[11px] uppercase tracking-[0.15em] px-4 py-2.5 border flex items-center gap-2 transition-all"
-                      style={{ borderColor: theme.text, color: theme.text }}
-                    >
-                      <Github size={12} /> View Code
-                    </a>
-                    <a
-                      href={p.demo}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn-ghost font-mono text-[11px] uppercase tracking-[0.15em] px-4 py-2.5 border flex items-center gap-2 transition-all"
+                      key={t}
+                      className="font-mono text-[10px] uppercase tracking-[0.1em] px-2 py-1 border"
                       style={{ borderColor: theme.border, color: theme.muted }}
                     >
-                      Live Demo <ArrowUpRight size={12} />
-                    </a>
-                  </div>
-                </article>
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-3 flex-wrap">
+                  <a
+                    href={PROJECTS[activeProject].code}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-primary font-mono text-[11px] uppercase tracking-[0.15em] px-5 py-3 border flex items-center gap-2 transition-all"
+                    style={{ borderColor: theme.text, color: theme.text }}
+                  >
+                    <Github size={13} /> View on GitHub
+                  </a>
+                  <a
+                    href={PROJECTS[activeProject].demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-ghost font-mono text-[11px] uppercase tracking-[0.15em] px-5 py-3 border flex items-center gap-2 transition-all"
+                    style={{ borderColor: theme.border, color: theme.muted }}
+                  >
+                    <ExternalLink size={13} /> Live Demo
+                  </a>
+                </div>
               </Reveal>
-            ))}
+            </div>
           </div>
         </div>
       </section>
