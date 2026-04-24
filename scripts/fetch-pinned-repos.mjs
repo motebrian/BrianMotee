@@ -31,8 +31,8 @@ const OUTPUT_PATH = resolve(
 );
 
 if (!USERNAME || !TOKEN) {
-  console.error("✗ Missing GITHUB_USERNAME or GITHUB_TOKEN environment variable.");
-  process.exit(1);
+  console.warn("⚠ Missing GITHUB_USERNAME or GITHUB_TOKEN — skipping fetch, using existing projects.json.");
+  process.exit(0);
 }
 
 // ─── GRAPHQL QUERY ───────────────────────────────────────────────────────

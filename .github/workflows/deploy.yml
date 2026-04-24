@@ -36,8 +36,7 @@ jobs:
         run: npm run build
         env:
           GITHUB_USERNAME: motebrian
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/configure-pages@v4
 
