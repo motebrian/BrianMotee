@@ -1,0 +1,60 @@
+{
+  "generatedAt": "placeholder",
+  "source": "github.com/motebrian",
+  "projects": [
+    {
+      "title": "Customer Churn Predictor",
+      "blurb": "Gradient-boosted ensemble predicting subscription cancellation 30 days out. Deployed as a FastAPI microservice with SHAP explanations.",
+      "stack": ["Python", "XGBoost", "SHAP", "FastAPI", "Docker"],
+      "code": "https://github.com/motebrian/churn-predictor",
+      "demo": "https://github.com/motebrian/churn-predictor",
+      "metric": "AUC 0.91",
+      "_meta": { "primaryLanguage": "Python", "primaryLanguageColor": "#3572A5", "forks": 0, "updatedAt": null, "ogImage": null }
+    },
+    {
+      "title": "Real-Time Fraud Detection",
+      "blurb": "Streaming anomaly detection over 2M+ transactions/day using isolation forests and an autoencoder ensemble on Kafka topics.",
+      "stack": ["PySpark", "Kafka", "PyTorch", "Redis"],
+      "code": "https://github.com/motebrian/fraud-stream",
+      "demo": "https://github.com/motebrian/fraud-stream",
+      "metric": "< 80ms latency",
+      "_meta": { "primaryLanguage": "Python", "primaryLanguageColor": "#3572A5", "forks": 0, "updatedAt": null, "ogImage": null }
+    },
+    {
+      "title": "NLP Review Sentiment Engine",
+      "blurb": "Fine-tuned DistilBERT on 500k product reviews with aspect-based sentiment extraction. Served behind a GraphQL gateway.",
+      "stack": ["Transformers", "PyTorch", "GraphQL", "Ray"],
+      "code": "https://github.com/motebrian/sentiment-engine",
+      "demo": "https://github.com/motebrian/sentiment-engine",
+      "metric": "F1 0.88",
+      "_meta": { "primaryLanguage": "Python", "primaryLanguageColor": "#3572A5", "forks": 0, "updatedAt": null, "ogImage": null }
+    },
+    {
+      "title": "Demand Forecasting Suite",
+      "blurb": "Hierarchical time-series forecasting across 12k SKUs using Prophet + N-BEATS, with backtesting dashboards in Streamlit.",
+      "stack": ["Prophet", "N-BEATS", "Streamlit", "Airflow"],
+      "code": "https://github.com/motebrian/demand-forecast",
+      "demo": "https://github.com/motebrian/demand-forecast",
+      "metric": "MAPE 6.2%",
+      "_meta": { "primaryLanguage": "Python", "primaryLanguageColor": "#3572A5", "forks": 0, "updatedAt": null, "ogImage": null }
+    },
+    {
+      "title": "Retrieval-Augmented QA Bot",
+      "blurb": "Hybrid BM25 + dense retrieval over 40k internal docs, re-ranked with a cross-encoder. Citation-grounded answers only.",
+      "stack": ["LangChain", "Pinecone", "Llama-3", "Next.js"],
+      "code": "https://github.com/motebrian/rag-bot",
+      "demo": "https://github.com/motebrian/rag-bot",
+      "metric": "92% citation recall",
+      "_meta": { "primaryLanguage": "Python", "primaryLanguageColor": "#3572A5", "forks": 0, "updatedAt": null, "ogImage": null }
+    },
+    {
+      "title": "Experimentation Platform",
+      "blurb": "Bayesian A/B testing framework with sequential analysis, CUPED variance reduction, and auto-generated stakeholder reports.",
+      "stack": ["NumPyro", "Pandas", "DuckDB", "Quarto"],
+      "code": "https://github.com/motebrian/experiment-platform",
+      "demo": "https://github.com/motebrian/experiment-platform",
+      "metric": "40% faster decisions",
+      "_meta": { "primaryLanguage": "Python", "primaryLanguageColor": "#3572A5", "forks": 0, "updatedAt": null, "ogImage": null }
+    }
+  ]
+}
