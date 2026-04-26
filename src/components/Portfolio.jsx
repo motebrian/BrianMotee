@@ -33,14 +33,13 @@ const C = {
    DATA
 ═══════════════════════════════════════════════════════════════ */
 const NAV = [
-  { id: "about",    label: "Meet Brian"    },
-  { id: "toolkit",  label: "The Toolkit"   },
-  { id: "projects", label: "Case Files"    },
-  { id: "journey",  label: "The Chronicle" },
-  { id: "articles", label: "The Feed"      },
-  { id: "channel",  label: "The Channel"   },
-  { id: "services", label: "The Offer"     },
-  { id: "booking",  label: "Let's Talk"    },
+  { id: "about",    label: "Meet Brian"  },
+  { id: "toolkit",  label: "The Toolkit" },
+  { id: "projects", label: "Projects"    },
+  { id: "journey",  label: "Career"      },
+  { id: "articles", label: "The Feed"    },
+  { id: "channel",  label: "The Channel" },
+  { id: "services", label: "Let's Work"  },
 ];
 
 const STATS = [
@@ -50,38 +49,16 @@ const STATS = [
   { value: "12K+", label: "Records Processed"     },
 ];
 
-const SKILLS = [
-  {
-    label: "Statistical Analysis",
-    color: C.gold,
-    items: ["R / R Studio", "Python", "STATA", "SPSS", "Excel (Power Query)"],
-  },
-  {
-    label: "Machine Learning",
-    color: C.teal,
-    items: ["scikit-learn", "XGBoost / LightGBM", "NLP & Transformers", "Prophet / N-BEATS", "SHAP Explainability"],
-  },
-  {
-    label: "Visualization & BI",
-    color: C.blue,
-    items: ["Power BI", "Tableau", "Plotly / Dash", "ggplot2", "IBM Cognos / Looker"],
-  },
-  {
-    label: "Geospatial",
-    color: C.green,
-    items: ["GeoPandas", "QGIS", "Folium / Leaflet", "PostGIS", "Spatial Analysis"],
-  },
-  {
-    label: "Data Engineering",
-    color: "#C084FC",
-    items: ["PostgreSQL", "ETL Pipelines", "Google App Script", "SurveyCTO / REDCap", "Data Pipelines"],
-  },
-  {
-    label: "Research Methods",
-    color: "#FB923C",
-    items: ["Mixed Methods", "Survey Design", "Impact Evaluation", "KPI Monitoring", "Research Ethics"],
-  },
-];
+function getSkills() {
+  return [
+    { label: "Statistical Analysis", color: C.gold,    level: 93, items: ["R / R Studio", "Python", "STATA", "SPSS", "Excel (Power Query)"] },
+    { label: "Machine Learning",      color: C.teal,    level: 88, items: ["scikit-learn", "XGBoost / LightGBM", "NLP & Transformers", "Prophet / N-BEATS", "SHAP Explainability"] },
+    { label: "Visualization & BI",    color: C.blue,    level: 91, items: ["Power BI", "Tableau", "Plotly / Dash", "ggplot2", "IBM Cognos / Looker"] },
+    { label: "Geospatial",            color: C.green,   level: 85, items: ["GeoPandas", "QGIS", "Folium / Leaflet", "PostGIS", "Spatial Analysis"] },
+    { label: "Data Engineering",      color: "#C084FC", level: 82, items: ["PostgreSQL", "ETL Pipelines", "Google App Script", "SurveyCTO / REDCap", "Data Pipelines"] },
+    { label: "Research Methods",      color: "#FB923C", level: 95, items: ["Mixed Methods", "Survey Design", "Impact Evaluation", "KPI Monitoring", "Research Ethics"] },
+  ];
+}
 
 const PROJECTS = {
   ml: [
@@ -90,8 +67,8 @@ const PROJECTS = {
       description: "Gradient-boosted ensemble predicting subscription cancellation 30 days ahead. SHAP-powered explainability layer translates model outputs into business-ready narratives for non-technical stakeholders.",
       tech: ["Python", "XGBoost", "SHAP", "Streamlit", "FastAPI"],
       metric: "AUC 0.91",
-      github: "https://github.com/motebrian",
-      demo: null,
+      github: "https://github.com/motebrian/churn-intelligence-engine",
+      demo: "https://churn-intelligence-engine-ytz7nwe8nfsepmbgtiepe6.streamlit.app/",
     },
     {
       title: "NLP Survey Response Classifier",
@@ -142,8 +119,8 @@ const PROJECTS = {
       description: "Spatial accessibility analysis mapping walking-distance corridors to health facilities across Nairobi's informal settlements — informing county health teams on optimal new facility placement.",
       tech: ["Python", "GeoPandas", "Folium", "QGIS", "Streamlit"],
       metric: "2.3M Residents",
-      github: "https://github.com/motebrian",
-      demo: null,
+      github: "https://github.com/motebrian/Nairobi-Health-Facilities-Atlas",
+      demo: "https://nairobi-health-facilities-atlas-j8okpywx9rixavycschjmr.streamlit.app/",
     },
     {
       title: "East Africa NGO Impact Footprint",
@@ -162,9 +139,38 @@ const PROJECTS = {
       demo: null,
     },
   ],
+  tableau: [
+    {
+      title: "Sales Performance Dashboard",
+      description: "End-to-end sales overview dashboard tracking revenue, pipeline health, and rep performance across regions. Designed for executive and sales leadership audiences.",
+      tech: ["Tableau", "SQL", "Sales Data"],
+      metric: "Sales BI",
+      vizId: "viz1777127380112",
+      vizName: "SalesDashboard_17130874601910/Overview",
+      vizSizes: { wLarge: 1300, hLarge: 827, wMed: 1300, hMed: 827, hSmall: 1777 },
+    },
+    {
+      title: "Agricultural Expansion Dashboard",
+      description: "Ministry-level agricultural expansion intelligence dashboard tracking land use, crop yield trends, and regional expansion corridors for evidence-based policy and resource allocation decisions.",
+      tech: ["Tableau", "Agricultural Data", "SQL"],
+      metric: "Policy BI",
+      vizId: "viz1777179522944",
+      vizName: "MINISTRYOFAGRICULTURALEXPANSION/AGRICULTURALEXPANSIONDASHBOARD",
+      vizSizes: { wLarge: 1300, minHLarge: 827, maxHLarge: 887, heightRatio: 0.75, wMed: 1300, hSmall: 1777 },
+    },
+    {
+      title: "Executive Marketing Campaigns Dashboard",
+      description: "Executive-grade marketing intelligence dashboard presenting campaign ROI, channel performance, and audience engagement metrics for strategic decision-making.",
+      tech: ["Tableau", "Marketing Data", "SQL"],
+      metric: "Marketing BI",
+      vizId: "viz1777127674273",
+      vizName: "Executivemarketingcampaignsdashboard/Dashboard1",
+      vizSizes: { wLarge: 1300, hLarge: 827, wMed: 1300, hMed: 827, hSmall: 1627 },
+    },
+  ],
 };
 
-const EXPERIENCE = [
+function getExperience() { return [
   {
     role: "Research Coordinator",
     org: "Africa Population Health Research Centre (APHRC)",
@@ -231,7 +237,7 @@ const EXPERIENCE = [
       "Designed automated online questionnaires with integrated reporting workflows",
     ],
   },
-];
+]; }
 
 const EDUCATION = {
   degree: "Bachelor of Arts — Economics & Sociology",
@@ -251,56 +257,14 @@ const CERTS = [
   { name: "Fundamental Power BI",                        issuer: "Corporate Finance Institute", year: "2022" },
 ];
 
-const SERVICES = [
-  {
-    title: "Machine Learning Solutions",
-    tagline: "Predictive Intelligence for Real Decisions",
-    desc: "Custom ML models — churn prediction, classification, NLP, time-series forecasting — built for the scale and nuance of your business or program data. From prototype to deployed API.",
-    items: ["Predictive Model Development", "Model Explainability (SHAP/LIME)", "Streamlit & API Deployment", "Performance Monitoring"],
-    for: "Businesses & NGOs",
-    color: C.teal,
-  },
-  {
-    title: "Geospatial Intelligence",
-    tagline: "Where Your Data Lives on the Map",
-    desc: "Spatial analysis, interactive maps, and GIS-powered insights that reveal the geographic dimension of your problem — from facility planning to market expansion strategy.",
-    items: ["Spatial Data Analysis", "Interactive Map Dashboards", "Accessibility & Proximity Modeling", "GIS-Powered Reporting"],
-    for: "NGOs, Government & Retail",
-    color: C.green,
-  },
-  {
-    title: "R Statistical Analysis",
-    tagline: "Rigorous Stats for Evidence-Based Work",
-    desc: "End-to-end statistical analysis in R — survey design through regression modeling, survival analysis, and publication-ready visualizations for academic or executive audiences.",
-    items: ["Descriptive & Inferential Stats", "Regression & Survival Analysis", "R Shiny Interactive Dashboards", "R Markdown Reports"],
-    for: "Researchers & Public Health Teams",
-    color: C.gold,
-  },
-  {
-    title: "BI Dashboard Design",
-    tagline: "Insights Your Leadership Will Actually Use",
-    desc: "Executive-grade Power BI and Tableau dashboards that transform raw data into clear, actionable narratives — designed for decision-makers, not data scientists.",
-    items: ["Power BI & Tableau Development", "KPI Framework Design", "Automated Data Refresh", "Executive Reporting Packs"],
-    for: "Leadership Teams & Donors",
-    color: C.blue,
-  },
-  {
-    title: "Research & Survey Analytics",
-    tagline: "From Field to Finding",
-    desc: "Full-cycle research support — questionnaire design in SurveyCTO/REDCap, field data management, mixed-methods analysis, and stakeholder-ready evidence reports.",
-    items: ["Survey Design & Scripting", "Data Management Plans", "Mixed-Methods Analysis", "Impact & Evidence Reports"],
-    for: "NGOs & Research Institutions",
-    color: "#C084FC",
-  },
-  {
-    title: "Data Engineering & Automation",
-    tagline: "Reliable Pipelines. Trustworthy Data.",
-    desc: "PostgreSQL database design, automated data pipelines, and workflow automation that eliminates manual data work and gives your team back hours every week.",
-    items: ["Database Design (PostgreSQL)", "ETL Pipeline Development", "Workflow Automation", "Data Quality Frameworks"],
-    for: "Organizations Scaling Data Ops",
-    color: "#FB923C",
-  },
-];
+function getServices() { return [
+  { title: "Machine Learning Solutions",    tagline: "Predictive Intelligence for Real Decisions",      desc: "Custom ML models — churn prediction, classification, NLP, time-series forecasting — built for the scale and nuance of your business or program data. From prototype to deployed API.",    items: ["Predictive Model Development", "Model Explainability (SHAP/LIME)", "Streamlit & API Deployment", "Performance Monitoring"],   for: "Businesses & NGOs",                color: C.teal    },
+  { title: "Geospatial Intelligence",        tagline: "Where Your Data Lives on the Map",                 desc: "Spatial analysis, interactive maps, and GIS-powered insights that reveal the geographic dimension of your problem — from facility planning to market expansion strategy.",              items: ["Spatial Data Analysis", "Interactive Map Dashboards", "Accessibility & Proximity Modeling", "GIS-Powered Reporting"],          for: "NGOs, Government & Retail",        color: C.green   },
+  { title: "R Statistical Analysis",         tagline: "Rigorous Stats for Evidence-Based Work",           desc: "End-to-end statistical analysis in R — survey design through regression modeling, survival analysis, and publication-ready visualizations for academic or executive audiences.",       items: ["Descriptive & Inferential Stats", "Regression & Survival Analysis", "R Shiny Interactive Dashboards", "R Markdown Reports"],    for: "Researchers & Public Health Teams", color: C.gold    },
+  { title: "BI Dashboard Design",            tagline: "Insights Your Leadership Will Actually Use",       desc: "Executive-grade Power BI and Tableau dashboards that transform raw data into clear, actionable narratives — designed for decision-makers, not data scientists.",                      items: ["Power BI & Tableau Development", "KPI Framework Design", "Automated Data Refresh", "Executive Reporting Packs"],               for: "Leadership Teams & Donors",        color: C.blue    },
+  { title: "Research & Survey Analytics",    tagline: "From Field to Finding",                            desc: "Full-cycle research support — questionnaire design in SurveyCTO/REDCap, field data management, mixed-methods analysis, and stakeholder-ready evidence reports.",                   items: ["Survey Design & Scripting", "Data Management Plans", "Mixed-Methods Analysis", "Impact & Evidence Reports"],                   for: "NGOs & Research Institutions",     color: "#C084FC" },
+  { title: "Data Engineering & Automation",  tagline: "Reliable Pipelines. Trustworthy Data.",            desc: "PostgreSQL database design, automated data pipelines, and workflow automation that eliminates manual data work and gives your team back hours every week.",                          items: ["Database Design (PostgreSQL)", "ETL Pipeline Development", "Workflow Automation", "Data Quality Frameworks"],                   for: "Organizations Scaling Data Ops",   color: "#FB923C" },
+]; }
 
 const MEDIUM_TOPICS = [
   { title: "Using SHAP to Make Machine Learning Explainable to Business Stakeholders", tag: "Machine Learning", read: "7 min" },
@@ -326,6 +290,29 @@ function useReveal(threshold = 0.1) {
     return () => obs.disconnect();
   }, [threshold]);
   return [ref, vis];
+}
+
+function useCountUp(targetStr, duration = 1400) {
+  const [ref, vis] = useReveal(0.3);
+  const [display, setDisplay] = useState("0");
+  const animated = useRef(false);
+  useEffect(() => {
+    if (!vis || animated.current) return;
+    animated.current = true;
+    const match = targetStr.match(/^(\d+)(.*)/);
+    if (!match) { setDisplay(targetStr); return; }
+    const num = parseInt(match[1]);
+    const suffix = match[2];
+    const start = performance.now();
+    const frame = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setDisplay(`${Math.round(num * eased)}${suffix}`);
+      if (t < 1) requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  }, [vis]);
+  return [ref, display];
 }
 
 function Reveal({ children, delay = 0, y = 28, className = "" }) {
@@ -416,6 +403,30 @@ function Container({ children, narrow = false }) {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   SCROLL PROGRESS
+═══════════════════════════════════════════════════════════════ */
+function ScrollProgress() {
+  const [pct, setPct] = useState(0);
+  useEffect(() => {
+    const update = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      setPct(h > 0 ? (window.scrollY / h) * 100 : 0);
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+  return (
+    <div style={{
+      position: "fixed", top: 0, left: 0, zIndex: 200,
+      height: 2, width: `${pct}%`,
+      background: `linear-gradient(90deg, ${C.gold}, ${C.goldBt})`,
+      transition: "width 0.08s linear",
+      pointerEvents: "none",
+    }} />
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
    NAVBAR
 ═══════════════════════════════════════════════════════════════ */
 function Navbar({ active }) {
@@ -502,6 +513,23 @@ function Navbar({ active }) {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   STAT COUNTER
+═══════════════════════════════════════════════════════════════ */
+function StatCounter({ stat }) {
+  const [ref, display] = useCountUp(stat.value);
+  return (
+    <div ref={ref}>
+      <div style={{ fontFamily: C.serif, fontSize: "clamp(1.6rem, 3vw, 2.2rem)", fontWeight: 700, color: C.gold, lineHeight: 1 }}>
+        {display}
+      </div>
+      <div style={{ fontFamily: C.mono, fontSize: 10, color: C.muted, letterSpacing: "1.5px", textTransform: "uppercase", marginTop: 4 }}>
+        {stat.label}
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
    HERO
 ═══════════════════════════════════════════════════════════════ */
 function HeroSection() {
@@ -574,7 +602,7 @@ function HeroSection() {
 
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 56 }}>
             <Btn size="lg" onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>
-              View Case Files
+              View My Work
             </Btn>
             <Btn size="lg" variant="outline" onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}>
               Book a Session
@@ -586,14 +614,7 @@ function HeroSection() {
 
           <div style={{ display: "flex", gap: 40, flexWrap: "wrap" }}>
             {STATS.map((s, i) => (
-              <div key={i}>
-                <div style={{ fontFamily: C.serif, fontSize: "clamp(1.6rem, 3vw, 2.2rem)", fontWeight: 700, color: C.gold, lineHeight: 1 }}>
-                  {s.value}
-                </div>
-                <div style={{ fontFamily: C.mono, fontSize: 10, color: C.muted, letterSpacing: "1.5px", textTransform: "uppercase", marginTop: 4 }}>
-                  {s.label}
-                </div>
-              </div>
+              <StatCounter key={i} stat={s} />
             ))}
           </div>
         </div>
@@ -696,6 +717,54 @@ function AboutSection() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   SKILL CARD
+═══════════════════════════════════════════════════════════════ */
+function SkillCard({ skill: sk }) {
+  const [ref, vis] = useReveal(0.2);
+  return (
+    <div ref={ref} style={{
+      background: C.card, border: `1px solid ${C.border}`, borderRadius: 8, padding: "24px",
+      transition: "border-color 0.2s, background 0.2s, box-shadow 0.2s",
+    }}
+      onMouseEnter={e => { e.currentTarget.style.borderColor = `${sk.color}55`; e.currentTarget.style.background = C.cardHov; e.currentTarget.style.boxShadow = `0 4px 32px ${sk.color}10`; }}
+      onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.background = C.card; e.currentTarget.style.boxShadow = "none"; }}
+    >
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
+        <div style={{
+          display: "inline-flex", alignItems: "center", justifyContent: "center",
+          width: 38, height: 38, borderRadius: 8,
+          background: `${sk.color}18`, border: `1px solid ${sk.color}30`,
+          color: sk.color, fontSize: 16,
+        }}>
+          ◈
+        </div>
+        <span style={{ fontFamily: C.mono, fontSize: 11, fontWeight: 700, color: sk.color }}>{sk.level}%</span>
+      </div>
+      <div style={{ fontFamily: C.mono, fontSize: 11, fontWeight: 700, color: sk.color, letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: 10 }}>
+        {sk.label}
+      </div>
+      {/* proficiency bar */}
+      <div style={{ height: 3, background: `${sk.color}18`, borderRadius: 2, marginBottom: 16, overflow: "hidden" }}>
+        <div style={{
+          height: "100%", borderRadius: 2,
+          background: `linear-gradient(90deg, ${sk.color}88, ${sk.color})`,
+          width: vis ? `${sk.level}%` : "0%",
+          transition: "width 1s cubic-bezier(0.4,0,0.2,1) 0.3s",
+        }} />
+      </div>
+      <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 7 }}>
+        {sk.items.map(item => (
+          <li key={item} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ width: 4, height: 4, borderRadius: "50%", background: sk.color, flexShrink: 0, opacity: 0.7 }} />
+            <span style={{ fontFamily: C.sans, fontSize: "0.85rem", color: C.dim }}>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
    TOOLKIT
 ═══════════════════════════════════════════════════════════════ */
 function ToolkitSection() {
@@ -704,40 +773,15 @@ function ToolkitSection() {
       <Container>
         <Reveal>
           <Eyebrow>The Toolkit</Eyebrow>
-          <Headline size="lg">Skills &<br /><em style={{ color: C.gold, fontStyle: "italic" }}>Instruments</em></Headline>
+          <Headline size="lg">Skills &<br /><em style={{ color: C.gold, fontStyle: "italic" }}>Tools</em></Headline>
           <div style={{ width: 48, height: 2, background: C.gold, borderRadius: 2, margin: "24px 0 48px" }} />
         </Reveal>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}
           className="responsive-grid-3">
-          {SKILLS.map((sk, i) => (
+          {getSkills().map((sk, i) => (
             <Reveal key={sk.label} delay={i * 0.07}>
-              <div style={{
-                background: C.card, border: `1px solid ${C.border}`, borderRadius: 8, padding: "24px",
-                transition: "border-color 0.2s, background 0.2s",
-              }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = `${sk.color}44`; e.currentTarget.style.background = C.cardHov; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.background = C.card; }}
-              >
-                <div style={{
-                  display: "inline-flex", alignItems: "center", justifyContent: "center",
-                  width: 36, height: 36, borderRadius: 6,
-                  background: `${sk.color}18`, border: `1px solid ${sk.color}28`, marginBottom: 14, color: sk.color,
-                }}>
-                  ◈
-                </div>
-                <div style={{ fontFamily: C.mono, fontSize: 11, fontWeight: 700, color: sk.color, letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: 14 }}>
-                  {sk.label}
-                </div>
-                <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 7 }}>
-                  {sk.items.map(item => (
-                    <li key={item} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      <span style={{ width: 4, height: 4, borderRadius: "50%", background: sk.color, flexShrink: 0, opacity: 0.7 }} />
-                      <span style={{ fontFamily: C.sans, fontSize: "0.85rem", color: C.dim }}>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <SkillCard skill={sk} />
             </Reveal>
           ))}
         </div>
@@ -747,13 +791,104 @@ function ToolkitSection() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   PROJECTS — CASE FILES
+   PROJECTS — MY WORK
 ═══════════════════════════════════════════════════════════════ */
-const PROJECT_TABS = [
-  { key: "ml",  label: "Machine Learning", color: C.teal  },
-  { key: "r",   label: "R Projects",       color: C.gold  },
-  { key: "geo", label: "Geo Projects",     color: C.green },
-];
+function getProjectTabs() {
+  return [
+    { key: "ml",      label: "Machine Learning", color: C.teal  },
+    { key: "r",       label: "R Projects",       color: C.gold  },
+    { key: "geo",     label: "Geo Projects",     color: C.green },
+    { key: "tableau", label: "Tableau",           color: C.blue  },
+  ];
+}
+
+function TableauEmbed({ vizId, vizName, vizSizes }) {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const div = containerRef.current;
+    if (!div) return;
+    const obj = div.getElementsByTagName("object")[0];
+    if (!obj) return;
+    const w = div.offsetWidth;
+    const calcHeight = (fixedH) => {
+      if (vizSizes.heightRatio) {
+        const ratio = w * vizSizes.heightRatio;
+        if (vizSizes.minHLarge) obj.style.minHeight = vizSizes.minHLarge + "px";
+        if (vizSizes.maxHLarge) obj.style.maxHeight = vizSizes.maxHLarge + "px";
+        return ratio + "px";
+      }
+      return fixedH + "px";
+    };
+    if (w > 800) {
+      obj.style.width = vizSizes.wLarge + "px";
+      obj.style.height = calcHeight(vizSizes.hLarge);
+    } else if (w > 500) {
+      obj.style.width = vizSizes.wMed + "px";
+      obj.style.height = calcHeight(vizSizes.hMed);
+    } else {
+      obj.style.width = "100%";
+      obj.style.height = vizSizes.hSmall + "px";
+    }
+    const script = document.createElement("script");
+    script.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
+    obj.parentNode.insertBefore(script, obj);
+  }, [vizId]);
+
+  return (
+    <div ref={containerRef} id={vizId} style={{ position: "relative", width: "100%", overflowX: "auto" }}>
+      <object className="tableauViz" style={{ display: "none" }}>
+        <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
+        <param name="embed_code_version" value="3" />
+        <param name="site_root" value="" />
+        <param name="name" value={vizName} />
+        <param name="tabs" value="no" />
+        <param name="toolbar" value="yes" />
+        <param name="animate_transition" value="yes" />
+        <param name="display_static_image" value="yes" />
+        <param name="display_spinner" value="yes" />
+        <param name="display_overlay" value="yes" />
+        <param name="display_count" value="yes" />
+        <param name="language" value="en-GB" />
+      </object>
+    </div>
+  );
+}
+
+function TableauCard({ project, color }) {
+  return (
+    <div style={{
+      background: C.card, border: `1px solid ${C.border}`, borderRadius: 8,
+      display: "flex", flexDirection: "column", overflow: "hidden",
+      transition: "border-color 0.2s, box-shadow 0.2s",
+    }}
+      onMouseEnter={e => { e.currentTarget.style.borderColor = `${color}44`; e.currentTarget.style.boxShadow = `0 4px 32px ${color}0A`; }}
+      onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.boxShadow = "none"; }}
+    >
+      <TableauEmbed vizId={project.vizId} vizName={project.vizName} vizSizes={project.vizSizes} />
+
+      <div style={{ padding: "20px", flexGrow: 1, display: "flex", flexDirection: "column" }}>
+        <span style={{
+          fontFamily: C.mono, fontSize: 10, fontWeight: 700, letterSpacing: "1px",
+          textTransform: "uppercase", color,
+          background: `${color}14`, border: `1px solid ${color}2A`,
+          borderRadius: 3, padding: "3px 10px", alignSelf: "flex-start", marginBottom: 12,
+        }}>
+          {project.metric}
+        </span>
+        <h3 style={{ fontFamily: C.serif, fontSize: "1.05rem", fontWeight: 700, color: C.text, lineHeight: 1.3, marginBottom: 10 }}>
+          {project.title}
+        </h3>
+        <p style={{ fontFamily: C.sans, fontSize: "0.86rem", color: C.dim, lineHeight: 1.7, marginBottom: 14, flexGrow: 1 }}>
+          {project.description}
+        </p>
+        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+          {project.tech.map(t => <Chip key={t} color={color}>{t}</Chip>)}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function ProjectCard({ project, color }) {
   return (
@@ -804,13 +939,14 @@ function ProjectCard({ project, color }) {
 
 function ProjectsSection() {
   const [active, setActive] = useState("ml");
-  const tab = PROJECT_TABS.find(t => t.key === active);
+  const tabs = getProjectTabs();
+  const tab = tabs.find(t => t.key === active);
 
   return (
     <Section id="projects" style={{ background: C.surface }}>
       <Container>
         <Reveal>
-          <Eyebrow>Case Files</Eyebrow>
+          <Eyebrow>My Work</Eyebrow>
           <Headline size="lg">Selected<br /><em style={{ color: C.gold, fontStyle: "italic" }}>Project Work</em></Headline>
           <div style={{ width: 48, height: 2, background: C.gold, borderRadius: 2, margin: "24px 0 40px" }} />
         </Reveal>
@@ -820,7 +956,7 @@ function ProjectsSection() {
             display: "inline-flex", gap: 4, marginBottom: 40,
             background: C.card, border: `1px solid ${C.border}`, borderRadius: 8, padding: 6,
           }}>
-            {PROJECT_TABS.map(t => (
+            {tabs.map(t => (
               <button key={t.key} onClick={() => setActive(t.key)} style={{
                 background: active === t.key ? `${t.color}18` : "transparent",
                 border: active === t.key ? `1px solid ${t.color}30` : "1px solid transparent",
@@ -835,39 +971,44 @@ function ProjectsSection() {
           </div>
         </Reveal>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}
-          className="responsive-grid-3">
+        <div style={{ display: "grid", gridTemplateColumns: active === "tableau" ? "1fr" : "repeat(3, 1fr)", gap: 20 }}
+          className={active === "tableau" ? "" : "responsive-grid-3"}>
           {PROJECTS[active].map((p, i) => (
             <Reveal key={p.title} delay={i * 0.08}>
-              <ProjectCard project={p} color={tab.color} />
+              {active === "tableau"
+                ? <TableauCard project={p} color={tab.color} />
+                : <ProjectCard project={p} color={tab.color} />
+              }
             </Reveal>
           ))}
         </div>
 
-        <Reveal delay={0.2}>
-          <div style={{
-            marginTop: 48, padding: "28px 32px",
-            background: C.goldDim, border: `1px solid ${C.goldBdr}`, borderRadius: 8,
-            display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap",
-          }}>
-            <div>
-              <div style={{ fontFamily: C.serif, fontSize: "1.2rem", fontWeight: 700, color: C.text, marginBottom: 4 }}>
-                See All Projects on GitHub
+        {active !== "tableau" && (
+          <Reveal delay={0.2}>
+            <div style={{
+              marginTop: 48, padding: "28px 32px",
+              background: C.goldDim, border: `1px solid ${C.goldBdr}`, borderRadius: 8,
+              display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap",
+            }}>
+              <div>
+                <div style={{ fontFamily: C.serif, fontSize: "1.2rem", fontWeight: 700, color: C.text, marginBottom: 4 }}>
+                  See All Projects on GitHub
+                </div>
+                <div style={{ fontFamily: C.sans, fontSize: "0.88rem", color: C.dim }}>
+                  ML notebooks, R scripts, geospatial analyses, and more.
+                </div>
               </div>
-              <div style={{ fontFamily: C.sans, fontSize: "0.88rem", color: C.dim }}>
-                ML notebooks, R scripts, geospatial analyses, and more.
-              </div>
+              <Btn href="https://github.com/motebrian">↗ github.com/motebrian</Btn>
             </div>
-            <Btn href="https://github.com/motebrian">↗ github.com/motebrian</Btn>
-          </div>
-        </Reveal>
+          </Reveal>
+        )}
       </Container>
     </Section>
   );
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   RESUME — THE CHRONICLE
+   RESUME — THE JOURNEY
 ═══════════════════════════════════════════════════════════════ */
 function JourneySection() {
   const [openIdx, setOpenIdx] = useState(0);
@@ -876,7 +1017,7 @@ function JourneySection() {
     <Section id="journey">
       <Container>
         <Reveal>
-          <Eyebrow>The Chronicle</Eyebrow>
+          <Eyebrow>My Journey</Eyebrow>
           <Headline size="lg">Career &<br /><em style={{ color: C.gold, fontStyle: "italic" }}>Education</em></Headline>
           <div style={{ width: 48, height: 2, background: C.gold, borderRadius: 2, margin: "24px 0 48px" }} />
         </Reveal>
@@ -889,11 +1030,11 @@ function JourneySection() {
               Work Experience
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
-              {EXPERIENCE.map((exp, i) => (
+              {getExperience().map((exp, i, arr) => (
                 <Reveal key={i} delay={i * 0.06}>
                   <div style={{
                     borderLeft: `2px solid ${i === openIdx ? exp.typeColor : C.border}`,
-                    paddingLeft: 24, paddingBottom: i < EXPERIENCE.length - 1 ? 32 : 0,
+                    paddingLeft: 24, paddingBottom: i < arr.length - 1 ? 32 : 0,
                     position: "relative", cursor: "pointer", transition: "all 0.2s",
                   }}
                     onClick={() => setOpenIdx(openIdx === i ? -1 : i)}
@@ -1092,15 +1233,15 @@ function ChannelSection() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   SERVICES — THE OFFER
+   SERVICES — HOW WE CAN WORK TOGETHER.
 ═══════════════════════════════════════════════════════════════ */
 function ServicesSection() {
   return (
     <Section id="services" style={{ background: C.surface }}>
       <Container>
         <Reveal>
-          <Eyebrow>The Offer</Eyebrow>
-          <Headline size="lg">How I<br /><em style={{ color: C.gold, fontStyle: "italic" }}>Help</em></Headline>
+          <Eyebrow>My Services</Eyebrow>
+          <Headline size="lg">Opportunities for<br /><em style={{ color: C.gold, fontStyle: "italic" }}>Engagement</em></Headline>
           <div style={{ width: 48, height: 2, background: C.gold, borderRadius: 2, margin: "24px 0 16px" }} />
           <p style={{ fontFamily: C.sans, fontSize: "1rem", color: C.dim, maxWidth: 560, lineHeight: 1.7, marginBottom: 48 }}>
             Freelance data science services tailored for businesses and NGOs solving problems that matter — in East Africa and beyond.
@@ -1109,7 +1250,7 @@ function ServicesSection() {
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}
           className="responsive-grid-3">
-          {SERVICES.map((s, i) => (
+          {getServices().map((s, i) => (
             <Reveal key={s.title} delay={i * 0.06}>
               <div style={{
                 background: C.card, border: `1px solid ${C.border}`, borderRadius: 8, padding: "26px",
@@ -1120,7 +1261,7 @@ function ServicesSection() {
                 onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.boxShadow = "none"; }}
               >
                 <div style={{
-                  width: 40, height: 40, borderRadius: 8,
+                  width: 42, height: 42, borderRadius: 8,
                   background: `${s.color}14`, border: `1px solid ${s.color}28`,
                   display: "flex", alignItems: "center", justifyContent: "center",
                   fontSize: 18, marginBottom: 16, color: s.color,
@@ -1331,6 +1472,21 @@ export default function Portfolio() {
   return (
     <div style={{ background: C.bg, color: C.text, minHeight: "100vh" }}>
       <style>{`
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #07080E; }
+        ::-webkit-scrollbar-thumb { background: rgba(196,154,60,0.28); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(196,154,60,0.55); }
+
+        @media (max-width: 768px) {
+          .hide-mobile { display: none !important; }
+          .show-mobile { display: flex !important; }
+        }
+        @media (min-width: 769px) {
+          .show-mobile { display: none !important; }
+        }
         @media (max-width: 900px) {
           .responsive-grid-3 { grid-template-columns: 1fr 1fr !important; }
         }
@@ -1340,6 +1496,7 @@ export default function Portfolio() {
         }
       `}</style>
 
+      <ScrollProgress />
       <Navbar active={active} />
       <HeroSection />
       <AboutSection />
