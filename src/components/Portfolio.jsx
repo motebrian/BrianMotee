@@ -803,54 +803,59 @@ function getProjectTabs() {
 }
 
 function TableauEmbed({ vizId, vizName, vizSizes }) {
-  const containerRef = useRef(null);
+  const wrapperRef = useRef(null);
+  const innerRef  = useRef(null);
 
   useEffect(() => {
-    const div = containerRef.current;
-    if (!div) return;
-    const obj = div.getElementsByTagName("object")[0];
+    const wrapper = wrapperRef.current;
+    const inner   = innerRef.current;
+    if (!wrapper || !inner) return;
+    const obj = inner.getElementsByTagName("object")[0];
     if (!obj) return;
-    const w = div.offsetWidth;
-    const calcHeight = (fixedH) => {
-      if (vizSizes.heightRatio) {
-        const ratio = w * vizSizes.heightRatio;
-        if (vizSizes.minHLarge) obj.style.minHeight = vizSizes.minHLarge + "px";
-        if (vizSizes.maxHLarge) obj.style.maxHeight = vizSizes.maxHLarge + "px";
-        return ratio + "px";
-      }
-      return fixedH + "px";
-    };
-    if (w > 800) {
-      obj.style.width = vizSizes.wLarge + "px";
-      obj.style.height = calcHeight(vizSizes.hLarge);
-    } else if (w > 500) {
-      obj.style.width = vizSizes.wMed + "px";
-      obj.style.height = calcHeight(vizSizes.hMed);
+
+    const containerWidth = wrapper.offsetWidth;
+    const nativeWidth    = vizSizes.wLarge;
+    let   nativeHeight;
+
+    if (vizSizes.heightRatio) {
+      const computed = nativeWidth * vizSizes.heightRatio;
+      nativeHeight = vizSizes.maxHLarge ? Math.min(computed, vizSizes.maxHLarge) : computed;
     } else {
-      obj.style.width = "100%";
-      obj.style.height = vizSizes.hSmall + "px";
+      nativeHeight = vizSizes.hLarge;
     }
+
+    obj.style.width  = nativeWidth  + "px";
+    obj.style.height = nativeHeight + "px";
+
+    const scale = containerWidth / nativeWidth;
+    inner.style.width           = nativeWidth + "px";
+    inner.style.transform       = `scale(${scale})`;
+    inner.style.transformOrigin = "top left";
+    wrapper.style.height        = Math.round(nativeHeight * scale) + "px";
+
     const script = document.createElement("script");
     script.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
     obj.parentNode.insertBefore(script, obj);
   }, [vizId]);
 
   return (
-    <div ref={containerRef} id={vizId} style={{ position: "relative", width: "100%", overflowX: "auto" }}>
-      <object className="tableauViz" style={{ display: "none" }}>
-        <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
-        <param name="embed_code_version" value="3" />
-        <param name="site_root" value="" />
-        <param name="name" value={vizName} />
-        <param name="tabs" value="no" />
-        <param name="toolbar" value="yes" />
-        <param name="animate_transition" value="yes" />
-        <param name="display_static_image" value="yes" />
-        <param name="display_spinner" value="yes" />
-        <param name="display_overlay" value="yes" />
-        <param name="display_count" value="yes" />
-        <param name="language" value="en-GB" />
-      </object>
+    <div ref={wrapperRef} style={{ width: "100%", overflow: "hidden" }}>
+      <div ref={innerRef} id={vizId} style={{ position: "relative" }}>
+        <object className="tableauViz" style={{ display: "none" }}>
+          <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
+          <param name="embed_code_version" value="3" />
+          <param name="site_root" value="" />
+          <param name="name" value={vizName} />
+          <param name="tabs" value="no" />
+          <param name="toolbar" value="yes" />
+          <param name="animate_transition" value="yes" />
+          <param name="display_static_image" value="yes" />
+          <param name="display_spinner" value="yes" />
+          <param name="display_overlay" value="yes" />
+          <param name="display_count" value="yes" />
+          <param name="language" value="en-GB" />
+        </object>
+      </div>
     </div>
   );
 }
