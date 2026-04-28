@@ -93,7 +93,7 @@ const PROJECTS = {
       description: "Comprehensive statistical analysis of population health survey data — survival analysis, logistic regression, and multivariate modeling with publication-ready ggplot2 visualizations for APHRC.",
       tech: ["R", "ggplot2", "survival", "tidyverse", "R Markdown"],
       metric: "n = 12,000 records",
-      github: "https://github.com/motebrian",
+      github: "https://github.com/motebrian/Population-Health-Statistical-Study",
       demo: null,
     },
     {
