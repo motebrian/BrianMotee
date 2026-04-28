@@ -98,7 +98,7 @@ const PROJECTS = {
     },
     {
       title: "Public Health Monitoring Dashboard",
-      description: "R Shiny application enabling real-time exploration of health KPIs across geographies. Used to monitor field data quality and intervention coverage in real-time.",
+      description: "R Shiny application enabling real-time exploration of health KPIs across geographies. Used by APHRC program teams to monitor field data quality and intervention coverage in real-time.",
       tech: ["R Shiny", "tidyverse", "plotly", "DT", "flexdashboard"],
       metric: "Live Dashboard",
       github: "https://github.com/motebrian",
@@ -171,6 +171,46 @@ const PROJECTS = {
 };
 
 function getExperience() { return [
+  {
+    role: "Research Coordinator",
+    org: "Africa Population Health Research Centre (APHRC)",
+    period: "Nov 2025 – Jan 2026",
+    type: "Research",
+    typeColor: C.teal,
+    highlights: [
+      "Led daily data quality checks across SurveyCTO data collection pipelines",
+      "Coordinated stakeholder engagement for access to high-income areas and government approvals",
+      "Monitored and reported KPIs for field data collection operations",
+      "Resolved SurveyCTO technical issues ensuring zero data loss across field teams",
+    ],
+  },
+  {
+    role: "Program Associate",
+    org: "Africa Population Health Research Centre (APHRC)",
+    period: "Nov 2024 – Aug 2025",
+    type: "Analytics",
+    typeColor: C.gold,
+    highlights: [
+      "Built and optimized partnerships database supporting program-wide analytics and reporting",
+      "Designed executive dashboards and reports tracking program performance indicators",
+      "Automated data workflows (Google App Script → PostgreSQL), cutting turnaround time by 60%",
+      "Created and deployed questionnaires in REDCap and Google Forms at scale",
+      "Conducted mixed-methods analysis informing organizational strategic decisions",
+    ],
+  },
+  {
+    role: "Statistician — Project FamilEA",
+    org: "Africa Population Health Research Centre (APHRC)",
+    period: "May 2024 – Nov 2024",
+    type: "Research",
+    typeColor: C.teal,
+    highlights: [
+      "Designed, tested, and optimized the population survey questionnaire in SurveyCTO",
+      "Conducted data cleaning, validation, and quality assurance on 12,000+ records",
+      "Performed quantitative and qualitative analyses on population-level datasets",
+      "Oversaw field operations and compliance with research ethics protocols",
+    ],
+  },
   {
     role: "Data Analyst",
     org: "Ground View Analytics",
