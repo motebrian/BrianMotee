@@ -98,7 +98,7 @@ const PROJECTS = {
     },
     {
       title: "Public Health Monitoring Dashboard",
-      description: "R Shiny application enabling real-time exploration of health KPIs across geographies. Used by APHRC program teams to monitor field data quality and intervention coverage in real-time.",
+      description: "R Shiny application enabling real-time exploration of health KPIs across geographies. Used to monitor field data quality and intervention coverage in real-time.",
       tech: ["R Shiny", "tidyverse", "plotly", "DT", "flexdashboard"],
       metric: "Live Dashboard",
       github: "https://github.com/motebrian",
