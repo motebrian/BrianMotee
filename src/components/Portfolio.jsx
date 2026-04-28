@@ -83,7 +83,7 @@ const PROJECTS = {
       description: "Random forest classifier predicting health outcomes from demographic and behavioral survey data. Integrated with REDCap data exports for automated model retraining on fresh field data.",
       tech: ["Python", "scikit-learn", "pandas", "REDCap API", "Power BI"],
       metric: "Precision 0.89",
-      github: "https://github.com/motebrian",
+      github: "https://github.com/motebrian/health-outcome-predictor",
       demo: null,
     },
   ],
