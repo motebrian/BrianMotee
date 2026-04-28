@@ -75,8 +75,8 @@ const PROJECTS = {
       description: "End-to-end NLP pipeline classifying open-ended survey responses at scale. Trained on multilingual East African research datasets with Swahili / English support for public health research.",
       tech: ["Python", "HuggingFace", "Transformers", "PostgreSQL", "Streamlit"],
       metric: "F1 Score 0.87",
-      github: "https://github.com/motebrian",
-      demo: null,
+      github: "https://github.com/motebrian/nlp-survey-classifier",
+      demo: "https://nlp-survey-classifier-aqb7ueepyverehx9izcns2.streamlit.app/",
     },
     {
       title: "Population Health Outcome Predictor",
