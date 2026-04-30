@@ -101,7 +101,7 @@ const PROJECTS = {
       description: "R Shiny application enabling real-time exploration of health KPIs across geographies. Used to monitor field data quality and intervention coverage in real-time.",
       tech: ["R Shiny", "tidyverse", "plotly", "DT", "flexdashboard"],
       metric: "Live Dashboard",
-      github: "https://github.com/motebrian",
+      github: "https://github.com/motebrian/Public-Health-Monitoring-Dashboard",
       demo: null,
     },
     {
